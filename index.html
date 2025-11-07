@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fukushima Shinkin Bank </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Hiragino Sans', 'Meiryo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 150px;
+            
+            display: block;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #1565c0;
+        }
+
+        .sub-text {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .highlight {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .warning {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .form-box {
+            padding: 30px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            border-color: #4caf50;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        .balance {
+            text-align: center;
+            font-size: 16px;
+            margin: 25px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .balance span {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 18px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .error {
+            color: #f44336;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .success-message {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="minako.jpg" alt="">
+
+        <div class="info-box">
+            <p class="info-text">
+                お金を受け取るために<br>口座情報をご入力ください。
+            </p>
+            <p class="sub-text">
+                正しい情報を慎重に確認して入力すると、<br>
+                <span class="highlight">¥5,000,000</span> を受け取れます。
+            </p>
+            <p class="warning">
+                すべての取引は政府によって監視・保護されています。
+            </p>
+        </div>
+
+        <form class="form-box" id="bankForm">
+            <h2>出金</h2>
+
+            <label for="name">口座名義</label>
+            <input type="text" id="name" placeholder="口座名義を入力" required>
+            <div class="error" id="nameError">口座名義を入力してください</div>
+
+            <label for="number">口座番号</label>
+            <input type="text" id="number" placeholder="口座番号を入力" required>
+            <div class="error" id="numberError">有効な口座番号を入力してください</div>
+
+            <label for="bank">銀行名</label>
+            <input type="text" id="bank" placeholder="銀行名を入力" required>
+            <div class="error" id="bankError">銀行名を入力してください</div>
+
+            <label for="amount">送金額</label>
+            <input type="number" id="amount" placeholder="金額を入力" min="1" max="5000000" required>
+            <div class="error" id="amountError">有効な金額を入力してください（1円〜5,000,000円）</div>
+
+            <p class="balance">利用可能残高: <span>¥5,000,000</span></p>
+
+            <div class="success-message" id="successMessage">
+                すべての情報が正しく入力されました！
+            </div>
+
+            <a href="transaction.html" class="button" id="submitButton">送信</a>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('bankForm');
+            const submitButton = document.getElementById('submitButton');
+            const successMessage = document.getElementById('successMessage');
+
+            // Get all input fields
+            const inputs = form.querySelectorAll('input[required]');
+
+            // Initially disable the submit button
+            submitButton.addEventListener('click', function(e) {
+                if (!validateForm()) {
+                    e.preventDefault();
+                }
+            });
+
+            // Add real-time validation
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    validateField(this);
+                    updateSubmitButton();
+                });
+
+                input.addEventListener('blur', function() {
+                    validateField(this);
+                    updateSubmitButton();
+                });
+            });
+
+            function validateField(field) {
+                const errorElement = document.getElementById(field.id + 'Error');
+
+                if (!field.value.trim()) {
+                    showError(field, errorElement, 'このフィールドは必須です');
+                    return false;
+                }
+
+                // Specific validation for amount field
+                if (field.id === 'amount') {
+                    const amount = parseFloat(field.value);
+                    if (isNaN(amount) || amount < 1 || amount > 5000000) {
+                        showError(field, errorElement, '有効な金額を入力してください（1円〜5,000,000円）');
+                        return false;
+                    }
+                }
+
+                // Specific validation for account number (basic check)
+                if (field.id === 'number') {
+                    if (!/^\d+$/.test(field.value.trim())) {
+                        showError(field, errorElement, '口座番号は数字のみで入力してください');
+                        return false;
+                    }
+                }
+
+                // If all validations pass
+                hideError(field, errorElement);
+                return true;
+            }
+
+            function validateForm() {
+                let isValid = true;
+
+                inputs.forEach(input => {
+                    if (!validateField(input)) {
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    successMessage.style.display = 'block';
+                } else {
+                    successMessage.style.display = 'none';
+                }
+
+                return isValid;
+            }
+
+            function updateSubmitButton() {
+                const isValid = validateForm();
+
+                if (isValid) {
+                    submitButton.removeAttribute('disabled');
+                } else {
+                    submitButton.setAttribute('disabled', 'disabled');
+                }
+            }
+
+            function showError(field, errorElement, message) {
+                field.style.borderColor = '#f44336';
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+
+            function hideError(field, errorElement) {
+                field.style.borderColor = '#4caf50';
+                errorElement.style.display = 'none';
+            }
+
+            // Initialize button state
+            updateSubmitButton();
+        });
+    </script>
+</body>
+</html>
