@@ -139,16 +139,30 @@
             animation-delay: 5.5s;
         }
         
-        .important-notice {
-            background: #ffebee;
-            border-left: 4px solid #f44336;
+        .subject-line {
+            background: #e3f2fd;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .subject-line h2 {
+            color: #1565c0;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .success-notice {
+            background: #e8f5e9;
+            border-left: 4px solid #28a745;
             padding: 25px;
             margin-bottom: 25px;
             border-radius: 8px;
         }
         
-        .important-notice h2 {
-            color: #c62828;
+        .success-notice h2 {
+            color: #2e7d32;
             margin-bottom: 15px;
             font-size: 20px;
             display: flex;
@@ -156,75 +170,77 @@
             gap: 12px;
         }
         
-        .refund-notice {
-            background: #e8f5e9;
+        .amount-highlight {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #2e7d32;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .previous-payment {
+            background: #f8f9fa;
             padding: 15px;
             border-radius: 6px;
             margin: 15px 0;
-            border-left: 4px solid #28a745;
             text-align: center;
-            font-weight: bold;
-        }
-        
-        .divider {
-            text-align: center;
-            margin: 25px 0;
-            color: #777;
-            font-size: 18px;
-            letter-spacing: 5px;
+            border: 1px solid #e9ecef;
         }
         
         .section {
             margin-bottom: 30px;
         }
         
-        .section h3 {
-            color: #2c3e50;
+        .final-payment {
+            background: #fff3e0;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 1px solid #ffd54f;
+        }
+        
+        .final-payment h3 {
+            color: #e65100;
             margin-bottom: 15px;
             font-size: 18px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .purpose-list {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
+        .final-amount {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #e65100;
             margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #ffd54f;
         }
         
-        .purpose-list ol {
-            margin-left: 20px;
-        }
-        
-        .purpose-list li {
-            margin-bottom: 10px;
-        }
-        
-        .fee-details {
-            background: #fff3e0;
-            padding: 20px;
-            border-radius: 8px;
+        .refundable-note {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 6px;
             margin: 15px 0;
-        }
-        
-        .fee-details ul {
-            margin-left: 20px;
-        }
-        
-        .fee-details li {
-            margin-bottom: 8px;
+            border-left: 4px solid #28a745;
         }
         
         .bank-info {
-            background: #e3f2fd;
+            background: #f3e5f5;
             padding: 25px;
             border-radius: 8px;
             margin: 25px 0;
         }
         
         .bank-info h3 {
-            color: #1565c0;
+            color: #7b1fa2;
             margin-bottom: 20px;
             font-size: 18px;
             text-align: center;
@@ -240,12 +256,12 @@
             background: white;
             padding: 15px;
             border-radius: 6px;
-            border: 1px solid #bbdefb;
+            border: 1px solid #e1bee7;
         }
         
         .bank-label {
             font-weight: bold;
-            color: #1565c0;
+            color: #7b1fa2;
             margin-bottom: 5px;
             font-size: 14px;
         }
@@ -253,12 +269,12 @@
         .bank-value {
             font-size: 16px;
             font-weight: bold;
-            color: #0d47a1;
+            color: #4a148c;
         }
         
-        .final-note {
+        .appreciation {
             background: #f8f9fa;
-            padding: 20px;
+            padding: 25px;
             margin: 25px 0;
             border-radius: 8px;
             text-align: center;
@@ -326,12 +342,16 @@
                 padding: 20px;
             }
             
-            .important-notice, .bank-info, .final-note {
+            .subject-line, .success-notice, .final-payment, .bank-info, .appreciation {
                 padding: 20px;
             }
             
             .header h1 {
                 font-size: 20px;
+            }
+            
+            .amount-highlight, .final-amount {
+                font-size: 24px;
             }
         }
         
@@ -381,95 +401,101 @@
 
     <div class="container">
         <div class="header">
-            
-            <h1>重要なお知らせ</h1>
+            <h1>資金利用可能および最終確認のご案内</h1>
         </div>
         
         <div class="content-box">
-            <div class="important-notice">
+            <div class="subject-line">
+                <h2>件名：資金準備完了および最終確認手続きについて</h2>
+            </div>
+            
+            <div class="success-notice">
                 <h2>
-                    <i class="fas fa-exclamation-circle"></i>
-                    【重要なお知らせ】一時所得税および資金清算手数料について
+                    <i class="fas fa-check-circle"></i>
+                    資金準備完了のお知らせ
                 </h2>
                 <p>
-                    平素より格別のご愛顧を賜り、誠にありがとうございます。
+                    このたび、合計金額の資金が正常に処理され、引き出し可能な状態となったことをお知らせいたします。
                 </p>
-                <p style="margin-top: 15px">
-                    このたび、〔大口振込・資金入金・口座処理などの指定取引〕に関連し、一時所得税および資金清算手数料として120,000円のお支払いが必要となりました。
+                
+                <div class="amount-highlight">
+                    ¥5,000,000（500万円）
+                </div>
+                
+                <div class="previous-payment">
+                    <p>先にお支払いいただいた <strong>¥120,000</strong> は問題なく承認され、取引は最終目的地に進んでおります。</p>
+                </div>
+                
+                <p>
+                    主要な管理手数料および処理手数料はすでに全額カバーされており、取引は現在最終確認段階にあります。
                 </p>
-                <div class="refund-notice">
-                    なお、本手数料は確認完了後、速やかに全額返金されます。
-                </div>
             </div>
             
-            
-            <div class="section">
-                <h3>■ 手数料の目的</h3>
-                <p>本手数料は、金融取引の安全かつ円滑な処理を確保するために適用され、以下の項目を対象としています。</p>
+            <div class="final-payment">
+                <h3><i class="fas fa-file-invoice-dollar"></i> 最終確認手続き</h3>
+                <p>
+                    資金を完全に解放し、制限なくご利用いただくために、下記の通り最終確認のための支払いをご準備いただきますようお願いいたします：
+                </p>
                 
-                <div class="purpose-list">
-                    <ol>
-                        <li>取引確認：送金の真正性確認、送金者および受取人情報の検証、並びに内部規定および法的要件への適合確認。</li>
-                        <li>資金清算：送金資金が正確に清算され、受取人の口座に入金されることを保証するための処理（必要に応じて中継銀行での手続きも含む）。</li>
-                    </ol>
+                <div class="final-amount">
+                    最終受益者確認手数料および返金可能な保証金 – ¥200,000（20万円）
                 </div>
+                
+                <div class="refundable-note">
+                    <p>
+                        この金額は、受益者認証を完了し、取引のセキュリティ規定への準拠を確認するために必要です。
+                    </p>
+                    <p style="margin-top: 10px; font-weight: bold;">
+                        確認手続きが完了し、取引が承認され次第、¥200,000 は登録口座に返金され、解放された資金とともにお振り込みされます。
+                    </p>
+                </div>
+                
+                <p style="margin-top: 15px;">
+                    なお、これは全額 ¥5,000,000 が口座に入金され、即時引き出し可能になる前の最後のステップとなります。
+                </p>
+                <p style="margin-top: 10px;">
+                    支払い確認後、資金の引き出し手続きは遅滞なく完了し、ご指定の口座に安全に振り込まれます。
+                </p>
             </div>
             
-            
-            
-            <div class="section">
-                <h3>■ 手数料の詳細</h3>
-                
-                <div class="fee-details">
-                    <ul>
-                        <li><strong>金額：</strong>120,000円</li>
-                        <li><strong>適用対象：</strong>最終手続きに必要</li>
-                        <li><strong>重要性：</strong>500万円の送金清算を完了するために不可欠</li>
-                    </ul>
-                </div>
-            </div>
-            
-            
-            <div class="section">
-                <h3>■ お振込先</h3>
-                
-                <div class="bank-info">
-                    <h3>振込先情報</h3>
-                    <div class="bank-details">
-                        <div class="bank-item">
-                            <div class="bank-label">銀行名</div>
-                            <div class="bank-value">横浜銀行</div>
-                        </div>
-                        <div class="bank-item">
-                            <div class="bank-label">支店名</div>
-                            <div class="bank-value">境木支店</div>
-                        </div>
-                        <div class="bank-item">
-                            <div class="bank-label">口座種別</div>
-                            <div class="bank-value">普通預金口座</div>
-                        </div>
-                        <div class="bank-item">
-                            <div class="bank-label">口座番号</div>
-                            <div class="bank-value">1156631</div>
-                        </div>
-                        <div class="bank-item">
-                            <div class="bank-label">口座名義</div>
-                            <div class="bank-value">新出美奈子</div>
-                        </div>
+            <div class="bank-info">
+                <h3><i class="fas fa-university"></i> 受取口座</h3>
+                <div class="bank-details">
+                    <div class="bank-item">
+                        <div class="bank-label">銀行名</div>
+                        <div class="bank-value">横浜銀行</div>
+                    </div>
+                    <div class="bank-item">
+                        <div class="bank-label">支店名</div>
+                        <div class="bank-value">坂井木支店</div>
+                    </div>
+                    <div class="bank-item">
+                        <div class="bank-label">口座種別</div>
+                        <div class="bank-value">普通預金</div>
+                    </div>
+                    <div class="bank-item">
+                        <div class="bank-label">口座番号</div>
+                        <div class="bank-value">1156631</div>
+                    </div>
+                    <div class="bank-item">
+                        <div class="bank-label">口座名義</div>
+                        <div class="bank-value">新出 美奈子</div>
                     </div>
                 </div>
             </div>
             
-            
-            
-            <div class="final-note">
-                <p>お取引を円滑に完了させるため、速やかにお支払いくださいますようお願い申し上げます。</p>
-                <p style="margin-top: 10px">
-                    なお、本手数料は大口金融取引における安全性・信頼性・法令遵守を維持するために必要不可欠なものであり、確認後ただちに全額返金が保証されております。
+            <div class="appreciation">
+                <h3><i class="fas fa-handshake"></i> ご協力への感謝</h3>
+                <p>
+                    この度は手続きにおいてご協力・ご理解を賜り、誠にありがとうございます。すべての処理は最高の専門性と注意をもって行われておりますのでご安心ください。
+                </p>
+                <p style="margin-top: 10px;">
+                    ご質問や追加の確認が必要な場合は、どうぞ金融部までご連絡ください。
+                </p>
+                <p style="margin-top: 15px; font-weight: bold;">
+                    改めまして、引き続きのご信頼とご協力に心より感謝申し上げます。
                 </p>
             </div>
-            
-            
         </div>
         
         <footer>
@@ -504,10 +530,10 @@
             let progress = 0;
             const steps = [
                 { percent: 10, text: "初期化中..." },
-                { percent: 25, text: "取引データを確認中..." },
-                { percent: 40, text: "手数料規定を検証中..." },
+                { percent: 25, text: "資金状況を確認中..." },
+                { percent: 40, text: "取引データを検証中..." },
                 { percent: 60, text: "口座情報を確認中..." },
-                { percent: 75, text: "返金手続きを準備中..." },
+                { percent: 75, text: "最終手続きを準備中..." },
                 { percent: 90, text: "最終確認..." },
                 { percent: 100, text: "完了！" }
             ];
@@ -541,13 +567,6 @@
 
             // Start loading simulation
             simulateLoading();
-
-            // Add click event to the action button
-            document
-                .querySelector(".action-button")
-                .addEventListener("click", function () {
-                    alert("お支払い手続きページへ移動します。");
-                    // In a real application, this would redirect to the payment page
                 });
         });
     </script>
